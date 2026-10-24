@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f4f0e7">
+  <meta name="description" content="Wilmary Feal Amaya: gerencia de ventas, liderazgo de equipos y gestión senior de proyectos. Licenciada en Química con título homologado en España.">
+  <title>Wilmary Feal Amaya · Ventas, equipos y proyectos</title>
+  <style>
+    :root {
+      --paper: #f4f0e7;
+      --surface: #fffdf8;
+      --ink: #123e3b;
+      --ink-soft: #60706d;
+      --deep: #123e3b;
+      --deep-2: #1d504c;
+      --line: #d6d1c6;
+      --coral: #d95740;
+      --gold: #e4b84e;
+      --mint: #d9e2d8;
+      --white: #fffdf8;
+      --shadow: 0 24px 54px rgba(21, 57, 55, .13);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    [data-theme="dark"] {
+      --paper: #0f2625;
+      --surface: #173432;
+      --ink: #f7f2e7;
+      --ink-soft: #c5d0cc;
+      --deep: #071f1e;
+      --deep-2: #163b39;
+      --line: #42615d;
+      --mint: #244542;
+      --shadow: 0 24px 54px rgba(0, 0, 0, .28);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      text-rendering: optimizeLegibility;
+    }
+    button, a { font: inherit; }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 4px;
+    }
+    .skip-link {
+      position: fixed;
+      z-index: 100;
+      left: 1rem;
+      top: .75rem;
+      padding: .7rem 1rem;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #172d2b;
+      transform: translateY(-180%);
+      transition: transform .2s ease;
+      font-weight: 800;
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .shell { width: min(var(--max), calc(100% - 2rem)); margin-inline: auto; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 91%, transparent);
+      backdrop-filter: blur(12px);
+    }
+    .header-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      text-decoration: none;
+      font-weight: 850;
+      letter-spacing: -.02em;
+    }
+    .monogram {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      aspect-ratio: 1;
+      border-radius: 13px;
+      background: var(--deep);
+      color: var(--white);
+      font-size: .85rem;
+      letter-spacing: .04em;
+    }
+    .nav-wrap, .main-nav { display: flex; align-items: center; gap: .35rem; }
+    .main-nav a {
+      padding: .55rem .7rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 750;
+      font-size: .92rem;
+    }
+    .main-nav a:hover { background: var(--mint); }
+    .theme-toggle {
+      position: relative;
+      width: 54px;
+      min-width: 54px;
+      height: 32px;
+      min-height: 32px;
+      padding: 2px;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--ink);
+      cursor: pointer;
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 25%, transparent);
+    }
+    .theme-toggle::after { content: "☀"; position: absolute; right: 6px; top: 4px; font-size: .9rem; line-height: 1; }
+    .theme-toggle[aria-pressed="true"]::after { content: "☾"; left: 6px; right: auto; color: var(--white); }
+    .toggle-knob { display: block; width: 26px; height: 26px; border-radius: 50%; background: var(--deep); transition: transform .22s ease, background .22s ease; }
+    .theme-toggle[aria-pressed="true"] .toggle-knob { transform: translateX(22px); background: var(--gold); }
+    .visually-hidden { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0 0 0 0) !important; white-space: nowrap !important; border: 0 !important; }
+
+    .hero { padding: clamp(2.8rem, 4.55vw, 3.6rem) 0 4rem; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin: 0 0 1rem;
+      color: var(--coral);
+      font-size: .79rem;
+      font-weight: 900;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 32px; height: 3px; background: currentColor; }
+    h1, h2, h3, h4, p { overflow-wrap: anywhere; }
+    h1, h2, h3 { font-family: Bahnschrift, "Arial Narrow", Arial, sans-serif; }
+    h1 {
+      max-width: 11ch;
+      margin: 0;
+      font-family: Bahnschrift, "Arial Narrow", Arial, sans-serif;
+      font-size: clamp(3rem, 4.4vw, 4rem);
+      line-height: 1;
+      letter-spacing: -.045em;
+    }
+    .role-line {
+      max-width: 720px;
+      margin: .75rem 0 1.2rem;
+      font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+    .hero-copy { max-width: 67ch; color: var(--ink-soft); font-size: 1.08rem; }
+    .contact-note { margin: 2.3rem 0 0; color: var(--ink-soft); font-size: .92rem; }
+    .proposal-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 510px;
+      padding: clamp(1.25rem, 3vw, 2rem);
+      border-radius: 30px;
+      background: var(--deep);
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .panel-kicker {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      color: var(--gold);
+      font-family: Consolas, "Courier New", monospace;
+      font-size: .72rem;
+      font-weight: 850;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    .panel-kicker span:last-child { color: #9fb8b2; }
+    .honeycomb {
+      position: relative;
+      width: min(100%, 430px);
+      aspect-ratio: 1.13;
+      margin: .65rem auto 0;
+      filter: drop-shadow(0 12px 20px rgba(0,0,0,.16));
+    }
+    .hex {
+      --hex-border: #98bcb3;
+      --hex-fill: #164440;
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      width: 35%;
+      aspect-ratio: 1.1547;
+      display: grid;
+      place-items: center;
+      padding: 1rem .55rem;
+      background: var(--hex-border);
+      clip-path: polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    .hex::before {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      background: var(--hex-fill);
+      clip-path: inherit;
+    }
+    .hex-content { position: relative; z-index: 1; line-height: 1.05; }
+    .hex small {
+      display: block;
+      margin-bottom: .24rem;
+      color: #b9cbc6;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: clamp(.5rem, .75vw, .65rem);
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+    .hex strong { display: block; color: #fff; font-size: clamp(.73rem, 1.2vw, 1rem); }
+    .hex em { display: block; margin-top: .2rem; color: #c6d6d2; font-size: clamp(.56rem, .82vw, .7rem); font-style: normal; }
+    .hex--center { --hex-border: #fffdf8; --hex-fill: #f4f0e7; z-index: 2; }
+    .hex--center small, .hex--center em { color: #667572; }
+    .hex--center strong { color: #173a39; font-size: clamp(.9rem, 1.45vw, 1.18rem); }
+    .hex--control { --hex-border: var(--gold); }
+    .hex--relation { --hex-border: var(--coral); }
+    .hex--execution { --hex-border: #9fc2b8; }
+    .panel-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem 1rem;
+      margin-top: .3rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,.16);
+      color: #c6d6d2;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: .66rem;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .panel-legend span { display: inline-flex; align-items: center; gap: .4rem; }
+    .panel-legend i { width: 8px; height: 8px; background: var(--gold); }
+    .panel-legend span:nth-child(2) i { background: var(--coral); }
+    .panel-legend span:nth-child(3) i { background: #9fc2b8; }
+    .panel-caption { margin: .75rem 0 0; color: #b9cbc6; font-size: .78rem; line-height: 1.45; }
+
+    .section { padding: 4rem 0; }
+    .section-head { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem 2rem; align-items: end; margin-bottom: 1.5rem; }
+    .section-head h2 { margin: 0; max-width: none; font-size: clamp(2rem, 3.4vw, 3.05rem); line-height: 1.02; letter-spacing: -.045em; }
+    .section-head p { margin: 0; color: var(--ink-soft); max-width: 62ch; }
+    .metric-strip { display: grid; grid-template-columns: repeat(4, 1fr); overflow: hidden; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); }
+    .metric-cell { min-height: 152px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; }
+    .metric-cell:nth-child(2) { background: var(--gold); color: #173a39; }
+    .metric-cell:nth-child(3) { background: var(--coral); color: #fff; }
+    .metric-cell strong { display: block; font-family: Bahnschrift, Arial, sans-serif; font-size: clamp(2.4rem, 4vw, 3.35rem); line-height: .9; letter-spacing: -.05em; }
+    .metric-cell small { display: block; margin-top: .65rem; font-family: Consolas, monospace; font-size: .67rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .metric-cell p { margin: .65rem 0 0; color: inherit; font-size: .85rem; line-height: 1.4; }
+    .metric-cell--timeline strong { font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
+    .timeline-dots { display: grid; grid-template-columns: repeat(5, 1fr); margin: 1rem 0 .55rem; }
+    .timeline-dots span { position: relative; padding-top: 1rem; text-align: center; font-family: Consolas, monospace; font-size: .61rem; color: var(--ink-soft); }
+    .timeline-dots span::before { content: ""; position: absolute; left: 50%; top: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--deep); transform: translateX(-50%); }
+    .timeline-dots span:last-child::before { background: var(--coral); }
+    .metrics-note { margin: .85rem 0 0; color: var(--ink-soft); font-size: .82rem; }
+
+    .trajectory { background: var(--deep); color: var(--white); }
+    .trajectory .section-head p { color: #c5d5d1; }
+    .timeline { display: grid; gap: 1rem; }
+    .job {
+      display: grid;
+      grid-template-columns: minmax(210px, .72fr) minmax(0, 1.6fr);
+      gap: 2rem;
+      padding: clamp(1.35rem, 2.2vw, 1.7rem);
+      border: 1px solid rgba(255,255,255,.17);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.045);
+    }
+    .job time { color: var(--gold); font-size: .79rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+    .job h3 { margin: .4rem 0 .2rem; font-size: clamp(1.4rem, 2.5vw, 2rem); line-height: 1.05; letter-spacing: -.03em; }
+    .company { margin: 0; color: #b9cbc7; font-weight: 750; }
+    .role-list { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1rem; }
+    .role-list span { padding: .25rem .55rem; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; font-size: .8rem; }
+    .job ul { margin: 0; padding-left: 1.2rem; }
+    .job li + li { margin-top: .5rem; }
+    .job li::marker { color: var(--gold); }
+    .level-box { grid-column: 2; padding: 1.2rem; border-left: 4px solid var(--coral); border-radius: 0 16px 16px 0; background: rgba(255,255,255,.07); }
+    .level-box h4 { margin: 0 0 .8rem; color: var(--gold); font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; }
+    .level-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .9rem 1.1rem; }
+    .level-grid p { margin: 0; color: #d7e2df; font-size: .93rem; }
+    .level-grid strong { display: block; color: var(--white); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; }
+    .disclaimer { margin-top: .8rem !important; color: #f2d8ce !important; font-size: .84rem !important; }
+
+    .capability-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .capability { min-height: 250px; padding: 1.5rem; border: 1px solid var(--line); border-top: 5px solid var(--deep); border-radius: 0 0 22px 22px; background: var(--surface); }
+    .capability:nth-child(2) { border-top-color: var(--coral); }
+    .capability:nth-child(3) { border-top-color: var(--gold); }
+    .capability .num { color: var(--coral); font-weight: 900; letter-spacing: .09em; font-size: .8rem; }
+    .capability h3 { margin: 1rem 0 .6rem; font-size: 1.55rem; line-height: 1.1; }
+    .capability p { color: var(--ink-soft); }
+    .capacity-proof { margin: 1rem 0 0; font-size: .83rem; }
+
+    .tools-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 2.5rem; }
+    .training-card { min-height: 360px; padding: clamp(1.6rem, 4vw, 2.7rem); border-radius: var(--radius); background: var(--coral); color: #fff; display: flex; flex-direction: column; justify-content: space-between; }
+    .training-card h3 { margin: 0 0 1.3rem; color: #fff; font-size: clamp(1.9rem, 3.4vw, 2.8rem); line-height: 1.05; }
+    .training-card ol { margin: 1.5rem 0 0; padding-left: 1.2rem; }
+    .training-card li + li { margin-top: .65rem; }
+    .tools-card { padding: clamp(1.6rem, 4vw, 2.7rem); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+    .tools-card h3 { margin-top: 0; font-size: 1.45rem; }
+    .tools-card > p { color: var(--ink-soft); }
+    .chips { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.4rem; }
+    .chips span { padding: .55rem .75rem; border-radius: 10px; background: var(--paper); font-weight: 780; }
+    .market-box { margin-top: 1.4rem; padding: 1rem; border: 1px dashed var(--coral); border-radius: 14px; }
+    .market-box h4 { margin: 0 0 .4rem; }
+    .market-box p { margin: 0; color: var(--ink-soft); }
+
+    .next-step { width: min(100% - 2rem, var(--max)); margin: 0 auto 3rem; padding: clamp(1.7rem, 4.45vw, 3.5rem); border-radius: 30px; background: var(--deep); color: #fff; }
+    .next-step h2 { max-width: 12ch; margin: 0 0 .8rem; color: #fff; font-size: clamp(2.1rem, 4vw, 3.4rem); line-height: 1.03; letter-spacing: -.04em; }
+    .next-step p:last-child { margin: 0; color: #ccdad6; }
+    footer { border-top: 1px solid var(--line); padding: 1.5rem 0 2.5rem; color: var(--ink-soft); }
+    footer .shell { display: flex; justify-content: space-between; gap: 1rem; }
+
+    @media (max-width: 900px) {
+      .main-nav { display: none; }
+      .hero-grid, .section-head, .tools-layout { grid-template-columns: 1fr; }
+      .hero { padding-top: 3.5rem; }
+      .section-head { align-items: start; }
+      .section-head h2 { max-width: none; }
+      .job { grid-template-columns: 1fr; }
+      .level-box { grid-column: 1; }
+      .capability-grid { grid-template-columns: 1fr; }
+      .capability { min-height: 0; }
+      .metric-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .shell { width: min(100% - 1.1rem, var(--max)); }
+      .brand > span:last-child { display: inline; font-size: .9rem; }
+      .header-inner { min-height: 64px; }
+      .theme-toggle { padding: 2px; }
+      .hero { padding-top: 2.8rem; }
+      h1 { font-size: clamp(2.7rem, 16vw, 4.25rem); }
+      .proposal-card { min-height: 430px; border-radius: 24px; padding: 1rem; }
+      .panel-kicker { font-size: .6rem; }
+      .honeycomb { width: min(100%, 330px); margin-top: .35rem; }
+      .hex { width: 37%; padding: .7rem .35rem; }
+      .hex small { font-size: .46rem; }
+      .hex strong { font-size: .7rem; }
+      .hex em { font-size: .5rem; }
+      .hex--center strong { font-size: .84rem; }
+      .panel-legend { gap: .4rem .7rem; font-size: .57rem; }
+      .level-grid { grid-template-columns: 1fr; }
+      .metric-strip { grid-template-columns: 1fr; border-radius: 16px; }
+      .metric-cell { min-height: 125px; }
+      .job { padding: 1.15rem; gap: 1.25rem; }
+      .level-box { padding: 1rem; }
+      footer .shell { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+
+    @media print {
+      :root { --paper: #fff; --surface: #fff; --ink: #132e2c; --ink-soft: #3e5552; --deep: #123b39; --line: #b8b8b8; }
+      body { font-size: 10.5pt; }
+      .site-header, .skip-link, .theme-toggle { display: none !important; }
+      .shell { width: 100%; }
+      .hero, .section { padding: 1.5rem 0; }
+      .hero-grid, .section-head, .tools-layout { grid-template-columns: 1fr; }
+      .proposal-card, .trajectory, .training-card, .next-step { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .job { break-inside: avoid; }
+      .trajectory { padding-inline: 1rem; }
+      .theme-toggle { box-shadow: none; }
+    }
+  
+    /* Adaptación de la referencia editorial de Iago al perfil de Wilmary. */
+    :root { --coral: #b84633; --ink-soft: #536460; }
+    [data-theme="dark"] { --coral: #f1a58e; --ink-soft: #c5d0cc; }
+    [data-theme="dark"] .training-card { background: #923323; }
+    .training-card { background: #b84633; }
+    h1 { max-width: 14ch; font-size: clamp(2.7rem, 4.3vw, 3.7rem); }
+    .hero { padding-bottom: 2.3rem; }
+    .hero-copy { font-size: 1.03rem; }
+    .contact-note { margin-top: 1.5rem; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.3rem; }
+    .hero-tags span { padding: .3rem .65rem; border: 1px solid var(--line); border-radius: 999px; font-size: .79rem; font-weight: 750; }
+    .proposal-card { min-height: 490px; }
+    .hex small { font-size: .64rem; }
+    .hex em { font-size: .68rem; }
+    .panel-kicker { font-size: .7rem; }
+    .panel-legend { font-size: .68rem; }
+    .hex--center small, .hex--center em { color: #52615e; }
+    .hex--control { --hex-border: #e4b84e; }
+    .hex--relation { --hex-border: #ed8e76; }
+    .metric-cell:nth-child(3) { background: #b84633; }
+    .metric-cell { min-height: 158px; }
+    .metric-cell strong { font-size: clamp(2.1rem, 3.4vw, 3rem); }
+    .metric-cell small { font-size: .72rem; }
+    .transition-block { margin-top: 2rem; padding: clamp(1.4rem, 3vw, 2.2rem); border: 1px solid var(--line); border-radius: 24px; background: var(--surface); }
+    .transition-block h3 { margin: 0 0 .9rem; font-size: clamp(1.65rem, 3vw, 2.15rem); line-height: 1.1; letter-spacing: -.03em; }
+    .transition-intro { max-width: 88ch; margin: 0; color: var(--ink-soft); }
+    .bridge-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; margin-top: 1.8rem; }
+    .bridge-step { border-top: 2px solid var(--line); padding-top: 1rem; }
+    .bridge-step b { display: block; font-size: 1.06rem; }
+    .bridge-step p { margin: .45rem 0 0; color: var(--ink-soft); font-size: .94rem; }
+    .bridge-step .bridge-num { color: var(--coral); font: 800 .73rem Consolas, monospace; letter-spacing: .08em; }
+    .leadership-note { margin: 1.4rem 0 0; padding: 1rem 1.2rem; border-left: 4px solid var(--gold); background: var(--paper); font-size: .96rem; }
+    .level-box h4 { color: #e4b84e; }
+    .level-grid strong { color: #fffdf8; }
+    .level-grid p { line-height: 1.55; }
+    .level-intro { margin: 0 0 1.1rem; color: #c5d5d1; font-size: .9rem; }
+    .level-grid { gap: 1.15rem 1.4rem; }
+    .capability { min-height: 240px; }
+    .capacity-proof { color: var(--ink-soft); }
+    .training-card { justify-content: flex-start; }
+    .training-card li { font-size: .95rem; }
+    .training-card small { display: block; margin-top: .2rem; line-height: 1.4; }
+    .tools-card h4 { margin: 1.5rem 0 .6rem; }
+    .tools-card .chips { margin-top: .65rem; }
+    .tools-card .chips span { font-size: .89rem; }
+    .development-list { margin: .8rem 0 0; padding-left: 1.15rem; color: var(--ink-soft); }
+    .development-list li + li { margin-top: .75rem; }
+    .development-list strong { color: var(--ink); }
+    .source-label { font: 700 .73rem Consolas, monospace; letter-spacing: .05em; }
+    .next-step h2 { max-width: 20ch; }
+    .next-step .eyebrow { color: #f4d889; }
+    section[id], main[id], article[id], li[id], .transition-block[id] { scroll-margin-top: 95px; }
+    @media (max-width: 900px) {
+      .bridge-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .hero-grid { gap: 2rem; }
+      .proposal-card { min-height: 0; }
+      .honeycomb { max-width: 430px; }
+    }
+    @media (max-width: 600px) {
+      .shell { width: calc(100% - 2rem); }
+      h1 { max-width: 14ch; font-size: clamp(2.45rem, 10.2vw, 3.3rem); }
+      .brand > span:last-child { max-width: 18ch; line-height: 1.25; }
+      .monogram { width: 36px; font-size: .75rem; }
+      .header-inner { gap: .5rem; }
+      .proposal-card { padding: 1.1rem; }
+      .panel-kicker { font-size: .67rem; flex-wrap: wrap; gap: .4rem; }
+      .honeycomb { margin: 1rem auto; }
+      .hex strong { font-size: .74rem; }
+      .hex small, .hex em { display: none; }
+      .hex--center strong { font-size: .9rem; }
+      .panel-legend { font-size: .66rem; }
+      .metric-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .metric-cell { padding: 1rem; min-height: 168px; }
+      .metric-cell strong { font-size: 2rem; }
+      .metric-cell small { font-size: .68rem; }
+      .metric-cell p { font-size: .83rem; }
+      .section { padding: 2.8rem 0; }
+      .next-step { width: calc(100% - 2rem); }
+      .training-card, .tools-card { padding: 1.3rem; }
+    }
+    @keyframes sectionEnter { from { opacity: .35; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes hexEnter { from { opacity: 0; transform: translate(-50%, -50%) scale(.88); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+    @keyframes chatEnter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal.is-visible { animation: sectionEnter .6s ease-out both; }
+    .hex { animation: hexEnter .6s ease-out both; }
+    .hex:nth-child(2) { animation-delay: .06s; }
+    .hex:nth-child(3) { animation-delay: .12s; }
+    .hex:nth-child(4) { animation-delay: .18s; }
+    .hex:nth-child(5) { animation-delay: .24s; }
+    .hex:nth-child(6) { animation-delay: .3s; }
+    .hex:nth-child(7) { animation-delay: .36s; }
+    .capability, .metric-cell { transition: transform .22s ease; }
+    @media (hover: hover) { .capability:hover { transform: translateY(-4px); } }
+    .chat-toggle { position: fixed; z-index: 51; bottom: max(1.15rem, env(safe-area-inset-bottom)); right: 1.2rem; width: 58px; height: 58px; display: grid; place-items: center; border: 2px solid #fffdf8; border-radius: 50%; background: #123e3b; color: #fffdf8; box-shadow: 0 8px 28px #071f1e40; cursor: pointer; }
+    .chat-toggle svg { width: 27px; height: 27px; }
+    .chat-toggle:hover { background: #1d504c; }
+    .chat-panel[hidden] { display: none; }
+    .chat-panel { position: fixed; z-index: 50; right: 1.2rem; bottom: calc(5.5rem + env(safe-area-inset-bottom)); display: flex; flex-direction: column; width: min(410px, calc(100vw - 2rem)); max-height: min(680px, calc(100dvh - 110px)); border: 1px solid var(--line); border-radius: 22px; background: var(--surface); color: var(--ink); box-shadow: 0 22px 70px #071f1e40; overflow: hidden; animation: chatEnter .2s ease-out; }
+    .chat-head { display: flex; align-items: start; justify-content: space-between; gap: .7rem; padding: 1rem 1.1rem .8rem; border-bottom: 1px solid var(--line); }
+    .chat-head h2 { margin: 0; font: 800 1.05rem 'Segoe UI', Arial, sans-serif; }
+    .chat-head p { margin: .25rem 0 0; color: var(--ink-soft); font-size: .77rem; }
+    .chat-close { display: grid; place-items: center; flex: 0 0 36px; width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; color: var(--ink); background: var(--paper); font-size: 1.3rem; cursor: pointer; }
+    .chat-scroll { overflow-y: auto; overscroll-behavior: contain; padding: 1rem; min-height: 0; }
+    .chat-welcome { margin: 0 0 .7rem; font-size: .9rem; }
+    .chat-presets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem; }
+    .chat-preset { padding: .6rem; min-height: 44px; border: 1px solid var(--line); border-radius: 10px; color: var(--ink); background: var(--paper); text-align: left; font-size: .8rem; line-height: 1.4; cursor: pointer; }
+    .chat-preset:hover { background: var(--mint); }
+    .chat-preset b, .chat-preset span { display: block; }
+    .chat-preset span { color: var(--ink-soft); font-size: .73rem; }
+    .chat-log { margin-top: .9rem; }
+    .chat-message { padding: .75rem .85rem; margin: .6rem 0 0; border-radius: 14px 14px 14px 3px; background: var(--paper); font-size: .87rem; line-height: 1.55; overflow-wrap: anywhere; }
+    .chat-message p { margin: 0; }
+    .chat-message--user { margin-left: 2rem; background: var(--mint); border-radius: 14px 14px 3px 14px; }
+    .chat-message a { display: inline-block; min-height: 32px; margin-top: .5rem; font-weight: 800; text-underline-offset: 3px; }
+    .chat-form { display: flex; align-items: stretch; gap: .4rem; padding: .8rem; border-top: 1px solid var(--line); }
+    .chat-form input { width: 100%; min-width: 0; min-height: 44px; border: 1px solid var(--line); border-radius: 10px; padding: .65rem; background: var(--paper); color: var(--ink); font: inherit; font-size: 16px; }
+    .chat-form button { padding: .55rem .7rem; border: 0; border-radius: 10px; background: #123e3b; color: #fffdf8; font-size: .85rem; font-weight: 750; cursor: pointer; }
+    .chat-toggle:focus-visible, .chat-panel button:focus-visible, .chat-panel input:focus-visible { outline: 3px solid #b84633; outline-offset: 3px; }
+    [data-theme="dark"] .chat-toggle:focus-visible, [data-theme="dark"] .chat-panel button:focus-visible, [data-theme="dark"] .chat-panel input:focus-visible { outline-color: #f1a58e; }
+    @media (max-width: 600px) { .chat-panel { right: 1rem; } .chat-toggle { right: 1rem; } footer { padding-bottom: 6rem; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+    @media (forced-colors: active) {
+      .hex { clip-path: none; border: 1px solid CanvasText; background: Canvas; }
+      .hex::before { background: Canvas; }
+      .hex strong { color: CanvasText; }
+      .toggle-knob { background: ButtonText; }
+    }
+    @media print {
+      :root, [data-theme="dark"] { --paper: #fff; --surface: #fff; --ink: #132e2c; --ink-soft: #3e5552; --deep: #123e3b; --coral: #b84633; --line: #b8b8b8; }
+      @page { size: A4; margin: 14mm; }
+      body { font-size: 10pt; }
+      .chat-toggle, .chat-panel { display: none !important; }
+      h1 { font-size: 30pt; max-width: none; }
+      h2 { font-size: 22pt !important; }
+      .hero-grid, .section-head, .tools-layout, .job { grid-template-columns: 1fr; }
+      .proposal-card { display: none; }
+      .section, .hero { padding: 12pt 0; }
+      .metric-strip { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .metric-cell { min-height: 0; padding: 9pt; }
+      .metric-cell strong { font-size: 21pt; }
+      .transition-block, .capability, .training-card, .tools-card { break-inside: avoid; }
+      .job { break-inside: auto; gap: 10pt; }
+      .job h3, h2, h3, h4 { break-after: avoid; }
+      .job li, .level-grid p { break-inside: avoid; }
+      .level-box { grid-column: 1; }
+      .bridge-grid, .capability-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .next-step { width: 100%; margin-bottom: 12pt; }
+    }
+</style>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio del perfil de Wilmary Feal Amaya">
+        <span class="monogram" aria-hidden="true">WF</span><span>Wilmary Feal Amaya</span>
+      </a>
+      <div class="nav-wrap">
+        <nav class="main-nav" aria-label="Navegación principal">
+          <a href="#mapa">Perfil</a><a href="#trayectoria">Experiencia</a><a href="#capacidades">Capacidades</a>
+        </nav>
+        <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Activar modo oscuro">
+          <span class="toggle-knob" aria-hidden="true"></span><span class="theme-label visually-hidden">Oscuro</span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="contenido" tabindex="-1">
+    <section class="hero" id="inicio" aria-labelledby="nombre">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">Ventas · equipos · proyectos</p>
+          <h1 id="nombre">Wilmary J.<br>Feal Amaya</h1>
+          <p class="role-line">Gerencia de ventas y liderazgo de equipos</p>
+          <p class="hero-copy">Soy licenciada en Química, con título homologado en España. He desarrollado mi trayectoria en ventas y gestión comercial, con experiencia como gerente de ventas, líder de equipos y un perfil senior en gestión de proyectos.</p>
+          <p class="hero-copy">Conecto el análisis de información con la relación con el cliente y la organización del trabajo. Mi experiencia abarca captación, seguimiento comercial, pedidos, inventarios, proveedores y resolución de incidencias.</p>
+          <div class="hero-tags" aria-label="Áreas del perfil"><span>Liderazgo comercial</span><span>Gestión de proyectos</span><span>Formación en IA aplicada</span></div>
+          <p class="contact-note">Benalmádena, Málaga · carné B y vehículo propio · disponibilidad de desplazamiento</p>
+        </div>
+        <aside class="proposal-card" aria-label="Mapa de capacidades comerciales">
+          <div class="panel-kicker"><span>Sistema profesional</span><span>Ventas y coordinación</span></div>
+          <div class="honeycomb" role="img" aria-label="Ventas en el centro, conectadas con análisis, clientes, equipos, pedidos, procesos y calidad">
+            <div class="hex hex--control" style="--x:50%;--y:17%" aria-hidden="true"><span class="hex-content"><small>Criterio</small><strong>Análisis</strong><em>datos y reportes</em></span></div>
+            <div class="hex hex--relation" style="--x:76%;--y:34%" aria-hidden="true"><span class="hex-content"><small>Relación</small><strong>Clientes</strong><em>escucha y venta</em></span></div>
+            <div class="hex hex--relation" style="--x:76%;--y:66%" aria-hidden="true"><span class="hex-content"><small>Liderazgo</small><strong>Equipos</strong><em>gestión comercial</em></span></div>
+            <div class="hex hex--execution" style="--x:50%;--y:83%" aria-hidden="true"><span class="hex-content"><small>Operación</small><strong>Pedidos</strong><em>stock y proveedores</em></span></div>
+            <div class="hex hex--execution" style="--x:24%;--y:66%" aria-hidden="true"><span class="hex-content"><small>Organización</small><strong>Procesos</strong><em>mejora continua</em></span></div>
+            <div class="hex hex--control" style="--x:24%;--y:34%" aria-hidden="true"><span class="hex-content"><small>Base científica</small><strong>Calidad</strong><em>rigor y método</em></span></div>
+            <div class="hex hex--center" style="--x:50%;--y:50%" aria-hidden="true"><span class="hex-content"><small>Núcleo</small><strong>Ventas</strong><em>cliente y equipo</em></span></div>
+          </div>
+          <div class="panel-legend" aria-hidden="true"><span><i></i>Análisis</span><span><i></i>Relación</span><span><i></i>Ejecución</span></div>
+          <p class="panel-caption">Una base científica para analizar; experiencia comercial para entender al cliente; liderazgo para coordinar el trabajo.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="mapa" aria-labelledby="mapa-title">
+      <div class="shell">
+        <div class="section-head"><h2 id="mapa-title">Una trayectoria con contexto</h2><p>Mi recorrido combina formación científica, experiencia comercial en España y actualización en inteligencia artificial aplicada a procesos.</p></div>
+        <div class="metric-strip" aria-label="Hitos de formación y trayectoria">
+          <article class="metric-cell"><div><strong>2014</strong><small>Formación universitaria</small></div><p>Licenciatura en Química. Título homologado en España.</p></article>
+          <article class="metric-cell"><div><strong>2019</strong><small>Trayectoria comercial</small></div><p>Inicio de la experiencia en ventas recogida en este CV.</p></article>
+          <article class="metric-cell"><div><strong>2022</strong><small>Gestión comercial</small></div><p>Incorporación a UVE: ventas, administración y coordinación de pedidos.</p></article>
+          <article class="metric-cell"><div><strong>40 h</strong><small>IA aplicada a procesos</small></div><p>Formación en RSK Educación, realizada en 2025.</p></article>
+        </div>
+        <div class="transition-block" id="transicion" tabindex="-1">
+          <p class="eyebrow">Transición profesional</p>
+          <h3>De la química a la gestión comercial</h3>
+          <p class="transition-intro">Mi formación de origen es científica y mi trayectoria en España se ha consolidado en el área comercial. En ventas he encontrado un ámbito donde aplicar mi capacidad de análisis, entender necesidades y dar seguimiento a cada gestión. Mi título homologado refuerza una base que también resulta útil para trabajar con productos técnicos, procesos y requisitos de calidad.</p>
+          <div class="bridge-grid">
+            <div class="bridge-step"><span class="bridge-num">01 / FORMACIÓN</span><b>Analizar con rigor</b><p>Relaciono mi base en Química y calidad con la atención al detalle, la interpretación de información y el seguimiento de procesos.</p></div>
+            <div class="bridge-step"><span class="bridge-num">02 / EXPERIENCIA</span><b>Entender y acompañar al cliente</b><p>He trasladado ese enfoque a la captación, la identificación de necesidades, la presentación de soluciones y la gestión de pedidos e incidencias.</p></div>
+            <div class="bridge-step"><span class="bridge-num">03 / LIDERAZGO</span><b>Coordinar la actividad comercial</b><p>Mi experiencia en gerencia de ventas y liderazgo de equipos amplía el perfil hacia la coordinación comercial y la gestión senior de proyectos.</p></div>
+          </div>
+          <p class="leadership-note"><strong>Mi siguiente paso:</strong> aportar esta combinación de criterio analítico, experiencia comercial y liderazgo a una responsabilidad de ventas y coordinación de equipos, con capacidad para comprender productos y servicios de componente técnico.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section trajectory" id="trayectoria" aria-labelledby="trayectoria-title">
+      <div class="shell">
+        <div class="section-head"><h2 id="trayectoria-title">Experiencia profesional</h2><p>De la captación telefónica a la gestión comercial y administrativa. El trabajo con clientes conecta con pedidos, proveedores, información y seguimiento.</p></div>
+        <div class="timeline">
+          <article class="job" id="experiencia-uve" tabindex="-1">
+            <div><time datetime="2022-07">Julio 2022 - actualidad</time><h3>Ventas y gestión administrativa</h3><p class="company">UVE S. A. · Málaga</p><div class="role-list"><span>Clientes y proveedores</span><span>Pedidos e inventario</span><span>Reportes comerciales</span></div></div>
+            <ul>
+              <li>Gestiono pedidos de clientes y coordino su seguimiento con proveedores para facilitar las entregas y resolver incidencias.</li>
+              <li>Controlo y superviso inventarios para mantener la disponibilidad de productos y apoyar las decisiones de compra.</li>
+              <li>Elaboro reportes de ventas, inventario y proveedores; analizo el desempeño y las tendencias del mercado como apoyo a la toma de decisiones.</li>
+              <li>Mantengo actualizados los registros de clientes y atiendo consultas e incidencias a lo largo de la gestión comercial.</li>
+              <li>Incorporo herramientas digitales a la gestión de procesos logísticos y al seguimiento de pedidos, atendiendo a los requisitos de cumplimiento.</li>
+            </ul>
+            <div class="level-box">
+              <h4>Modelo de trabajo senior · aplicación al entorno</h4>
+              <p class="level-intro">Propuesta de evolución para conectar la actividad comercial con la planificación de proyectos, la mejora de procesos y la formación en IA.</p>
+              <div class="level-grid">
+                <p><strong>Planificación con Microsoft Project</strong>Calendario de campañas y mejoras, hitos, responsables y dependencias entre ventas, compras y entrega. Revisión de fechas y carga antes de comprometer plazos.</p>
+                <p><strong>Seguimiento con Jira y GitHub Projects</strong>Jira para priorizar incidencias y acciones comerciales; GitHub Projects para coordinar mejoras con un equipo técnico cuando exista. Cada acción con responsable, estado y criterio de cierre.</p>
+                <p><strong>IA generativa aplicada al área</strong>Preparación de borradores de informes a partir de datos agregados y síntesis de incidencias para identificar temas recurrentes. Contraste con los registros originales antes de utilizar conclusiones.</p>
+                <p><strong>Gestión ágil e indicadores</strong>Kanban con límites de trabajo en curso y revisión semanal de bloqueos. Seguimiento de pedidos pendientes, plazos de resolución, disponibilidad y avance de acciones. Datos anonimizados y validación humana en los flujos de IA.</p>
+              </div>
+            </div>
+          </article>
+          <article class="job" id="experiencia-dos-g" tabindex="-1">
+            <div><time datetime="2021-11">Noviembre 2021 - mayo 2022</time><h3>Ventas y captación de clientes</h3><p class="company">DOS G Telemarketing</p><div class="role-list"><span>Venta telefónica</span><span>Seguimiento comercial</span><span>Atención posventa</span></div></div>
+            <ul>
+              <li>Capté clientes mediante llamadas para presentar productos, planes y servicios, adaptando la conversación a sus necesidades.</li>
+              <li>Identifiqué necesidades y recomendé soluciones personalizadas, explicando las características y los beneficios de cada oferta.</li>
+              <li>Gestioné bases de datos de clientes potenciales y el seguimiento de oportunidades para acompañar el proceso de conversión.</li>
+              <li>Trabajé con metas mensuales de ventas y mantuve la atención personalizada y el servicio posventa.</li>
+            </ul>
+            <div class="level-box">
+              <h4>Modelo de trabajo senior · aplicación al entorno</h4>
+              <p class="level-intro">Enfoque actual para un equipo de televenta: coordinación de campañas, seguimiento de oportunidades y mejora del discurso comercial.</p>
+              <div class="level-grid">
+                <p><strong>Coordinación comercial</strong>Jira para organizar acciones de campaña y seguimientos por responsable y fecha. Microsoft Project para planificar hitos de campaña; GitHub Projects como enlace con mejoras técnicas del proceso.</p>
+                <p><strong>IA aplicada al discurso de venta</strong>Diseño de variantes de guion, simulación de objeciones y preparación de respuestas a preguntas frecuentes. Revisión del producto, condiciones y tono antes de trasladarlas al equipo.</p>
+                <p><strong>Método de equipo</strong>Kanban para visualizar acciones y bloqueos, revisión breve de prioridades y retrospectiva de campaña. Criterios comunes para valorar oportunidades y decidir el siguiente contacto.</p>
+                <p><strong>Indicadores y uso responsable</strong>Contactabilidad, conversión por etapa y seguimientos a tiempo. En el análisis con IA, ejemplos anonimizados y revisión humana; conservación de las condiciones de la oferta como fuente de referencia.</p>
+              </div>
+            </div>
+          </article>
+          <article class="job" id="experiencia-psc" tabindex="-1">
+            <div><time datetime="2019-03">Marzo 2019 - septiembre 2021</time><h3>Ventas y atención al cliente</h3><p class="company">PSC Telemarketing</p><div class="role-list"><span>Captación</span><span>Venta consultiva</span><span>Fidelización</span></div></div>
+            <ul>
+              <li>Realicé captación telefónica y presenté productos, planes y servicios según las necesidades de cada cliente.</li>
+              <li>Expliqué beneficios y características de las ofertas para facilitar una decisión informada.</li>
+              <li>Actualicé la base de datos comercial y di seguimiento a clientes potenciales y oportunidades de venta.</li>
+              <li>Trabajé con objetivos mensuales de ventas y ofrecí atención personalizada y servicio posventa.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="capacidades" aria-labelledby="capacidades-title">
+      <div class="shell">
+        <div class="section-head"><h2 id="capacidades-title">Capacidades y formación</h2><p>La experiencia comercial es el centro de mi perfil. La formación científica, la gestión de proyectos y la actualización digital amplían lo que puedo aportar.</p></div>
+        <div class="capability-grid">
+          <article class="capability"><span class="num">01 / DIRECCIÓN COMERCIAL</span><h3>Ventas y equipos</h3><p>Experiencia como gerente de ventas y líder de equipos comerciales. Captación, identificación de necesidades, presentación de soluciones y seguimiento de oportunidades.</p><p class="capacity-proof">Orientación profesional: gerencia de ventas y coordinación comercial.</p></article>
+          <article class="capability"><span class="num">02 / GESTIÓN SENIOR</span><h3>Proyectos y operación</h3><p>Perfil senior en gestión de proyectos, con experiencia en coordinación de pedidos, relación con proveedores, inventarios, reportes y resolución de incidencias.</p><p class="capacity-proof">Conexión entre cliente, información y ejecución.</p></article>
+          <article class="capability"><span class="num">03 / BASE CIENTÍFICA</span><h3>Análisis y calidad</h3><p>Licenciatura en Química homologada en España. Formación en auditoría interna, sistemas de calidad, indicadores de gestión y mejora continua.</p><p class="capacity-proof">Base transferible a la venta de productos y servicios técnicos.</p></article>
+        </div>
+        <div class="tools-layout" id="formacion">
+          <article class="training-card">
+            <p class="eyebrow" style="color:#fff">Formación acreditada en el CV</p><h3>Ciencia, calidad e inteligencia artificial</h3>
+            <ol>
+              <li id="formacion-quimica" tabindex="-1"><strong>Licenciatura en Química · 2014</strong><small>Universidad de Carabobo, Venezuela. Título homologado en España.</small></li>
+              <li><strong>Auditor interno en calidad, seguridad industrial y ambiente · 2014</strong><small>Universidad José Antonio Páez, Venezuela.</small></li>
+              <li id="formacion-ia" tabindex="-1"><strong>Inteligencia artificial aplicada a la gestión de procesos · 40 h</strong><small>RSK Educación, Málaga · febrero - marzo de 2025.</small></li>
+              <li><strong>Gestión de sistemas de seguridad alimentaria · 120 h</strong><small>Euroformac · febrero - abril de 2024.</small></li>
+              <li><strong>Indicadores de gestión e ISO 9001 · 2015</strong><small>EXPRO Soluciones Empresariales · dos cursos de 8 h.</small></li>
+              <li><strong>Taller Kaizen · 2013</strong><small>Axalta Coating Systems Venezuela · 8 h.</small></li>
+            </ol>
+          </article>
+          <article class="tools-card">
+            <p class="eyebrow">Herramientas y formas de trabajo</p><h3>Gestión comercial con criterio digital</h3>
+            <p>Buen nivel de Office, análisis de datos y gestión de información comercial. Formación específica en inteligencia artificial aplicada a procesos.</p>
+            <div class="chips" aria-label="Conocimientos y áreas incluidos en la fuente"><span>Office</span><span>Reportes de ventas</span><span>Inventarios</span><span>Gestión de pedidos</span><span>IA aplicada a procesos · formación</span><span>Indicadores de gestión · formación</span></div>
+            <div class="market-box">
+              <h4>Ecosistema propuesto para la gestión senior</h4>
+              <ul class="development-list">
+                <li><strong>Jira:</strong> seguimiento de acciones, incidencias y campañas con prioridades y responsables.</li>
+                <li><strong>GitHub Projects:</strong> tableros y hoja de ruta para proyectos compartidos con equipos técnicos.</li>
+                <li><strong>Microsoft Project:</strong> planificación de hitos, dependencias y plazos.</li>
+                <li><strong>Kanban y mejora continua:</strong> visualización del flujo, límites de trabajo en curso y revisión de bloqueos. Prácticas ágiles ajustadas a la operación comercial.</li>
+                <li><strong>IA generativa:</strong> apoyo a guiones, síntesis de incidencias y borradores de reportes, con contraste de fuentes y protección de la información.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="next-step" aria-labelledby="siguiente-title">
+      <p class="eyebrow">Siguiente etapa profesional</p><h2 id="siguiente-title">Liderar ventas y coordinar proyectos.</h2>
+      <p>Busco aportar mi experiencia comercial y de liderazgo en un equipo que valore la relación con el cliente, la organización y el análisis. Mi base científica refuerza mi capacidad para comprender productos y procesos de componente técnico.</p>
+      <p>Benalmádena, Málaga · carné B · vehículo propio · disponibilidad de desplazamiento</p>
+    </section>
+  </main>
+  <footer><div class="shell"><span>Wilmary J. Feal Amaya</span><span>Perfil profesional · octubre de 2026</span></div></footer>
+  <button class="chat-toggle" type="button" aria-expanded="false" aria-controls="asistente-cv" aria-label="Abrir asistente del CV">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-8 8H5l-3 2V11.5a9 9 0 1 1 18 0Z"/><path d="M7 10h8M7 14h5"/></svg>
+  </button>
+  <aside class="chat-panel" id="asistente-cv" aria-labelledby="chat-title" hidden>
+    <div class="chat-head"><div><h2 id="chat-title">Asistente del CV</h2><p>Respuestas basadas en este perfil profesional</p></div><button class="chat-close" type="button" aria-label="Cerrar asistente">×</button></div>
+    <div class="chat-scroll" tabindex="0" aria-label="Preguntas y respuestas del asistente">
+      <p class="chat-welcome">Explora una etapa por fecha o escribe una pregunta. Te resumo la información y te llevo al bloque del CV.</p>
+      <div class="chat-presets" aria-label="Preguntas por fecha">
+        <button class="chat-preset" type="button" data-topic="uve"><b>2022 - actualidad</b><span>¿Qué hace en UVE?</span></button>
+        <button class="chat-preset" type="button" data-topic="dosg"><b>2021 - 2022</b><span>Ventas en DOS G</span></button>
+        <button class="chat-preset" type="button" data-topic="psc"><b>2019 - 2021</b><span>Ventas en PSC</span></button>
+        <button class="chat-preset" type="button" data-topic="ia"><b>2025 · IA</b><span>Formación y aplicaciones</span></button>
+        <button class="chat-preset" type="button" data-topic="quimica"><b>2014 · Química</b><span>Título y homologación</span></button>
+        <button class="chat-preset" type="button" data-topic="transicion"><b>Transición profesional</b><span>De química a ventas</span></button>
+      </div>
+      <div class="chat-log" role="log" aria-label="Conversación" aria-live="polite" aria-relevant="additions text"></div>
+    </div>
+    <form class="chat-form"><label class="visually-hidden" for="chat-question">Tu pregunta sobre el CV</label><input id="chat-question" type="text" maxlength="500" placeholder="Pregunta por una etapa o capacidad" autocomplete="off"><button type="submit">Enviar</button></form>
+  </aside>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const button = document.querySelector('.theme-toggle');
+      const label = document.querySelector('.theme-label');
+      const metaTheme = document.querySelector('meta[name="theme-color"]');
+      const storageKey = 'cv-wilmary-theme';
+      let stored = null;
+      try { stored = localStorage.getItem(storageKey); } catch { /* El tema funciona sin almacenamiento. */ }
+      const applyTheme = (theme) => {
+        const dark = theme === 'dark';
+        root.dataset.theme = dark ? 'dark' : 'light';
+        button.setAttribute('aria-pressed', String(dark));
+        button.setAttribute('aria-label', dark ? 'Activar modo claro' : 'Activar modo oscuro');
+        label.textContent = dark ? 'Claro' : 'Oscuro';
+        metaTheme.setAttribute('content', dark ? '#0f2625' : '#f4f0e7');
+      };
+      applyTheme(stored === 'dark' ? 'dark' : 'light');
+      button.addEventListener('click', () => {
+        const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+        try { localStorage.setItem(storageKey, next); } catch { /* Preferencia solo durante esta sesión. */ }
+      });
+
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const animated = document.querySelectorAll('.section-head, .metric-strip, .transition-block, .job, .capability-grid, .tools-layout, .next-step');
+      if (!reducedMotion.matches && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: .07 });
+        animated.forEach((node) => { node.classList.add('reveal'); observer.observe(node); });
+      }
+
+      const toggle = document.querySelector('.chat-toggle');
+      const panel = document.querySelector('.chat-panel');
+      const close = document.querySelector('.chat-close');
+      const form = document.querySelector('.chat-form');
+      const input = document.querySelector('#chat-question');
+      const log = document.querySelector('.chat-log');
+      const scroller = document.querySelector('.chat-scroll');
+      const answers = {
+        uve: { text: 'Desde julio de 2022, el CV recoge su trabajo en UVE S. A., Málaga: gestión de pedidos y proveedores, inventarios, reportes de ventas y atención de incidencias. El bloque incorpora un modelo senior de planificación, herramientas e IA aplicable a esta operación.', target: 'experiencia-uve', link: 'Ver experiencia en UVE' },
+        dosg: { text: 'De noviembre de 2021 a mayo de 2022 trabajó en ventas en DOS G Telemarketing: captación telefónica, identificación de necesidades, presentación de ofertas, seguimiento de oportunidades y posventa. El modelo senior e IA de este bloque es una aplicación actual propuesta para ese entorno.', target: 'experiencia-dos-g', link: 'Ir a noviembre de 2021 - mayo de 2022' },
+        psc: { text: 'De marzo de 2019 a septiembre de 2021 trabajó en PSC Telemarketing. Captó clientes, presentó productos y servicios, gestionó información comercial y seguimientos, y trabajó con metas mensuales de ventas y atención posventa.', target: 'experiencia-psc', link: 'Ir a marzo de 2019 - septiembre de 2021' },
+        ia: { text: 'En febrero y marzo de 2025 realizó el curso de Inteligencia artificial aplicada a la gestión de procesos, de 40 horas, en RSK Educación. El CV propone aplicaciones en informes, síntesis de incidencias y guiones comerciales, con datos anonimizados y validación humana. La formación está documentada; los casos se presentan como modelo de aplicación.', target: 'formacion-ia', link: 'Ver formación en IA de 2025' },
+        quimica: { text: 'Es licenciada en Química por la Universidad de Carabobo, Venezuela, desde 2014, con título homologado en España. Su formación aporta una base de análisis y calidad a una trayectoria que en España se ha desarrollado en ventas.', target: 'formacion-quimica', link: 'Ver formación en Química de 2014' },
+        transicion: { text: 'El perfil conecta su base científica con su carrera comercial en España. La capacidad de análisis y el rigor con los procesos acompañan su experiencia con clientes, pedidos, proveedores y ventas. La gerencia de ventas, el liderazgo y el nivel senior en proyectos amplían su posicionamiento profesional.', target: 'transicion', link: 'Ver la transición profesional' },
+        liderazgo: { text: 'Cuenta con experiencia como gerente de ventas y líder de equipos comerciales, y con un perfil senior en gestión de proyectos. La trayectoria detallada muestra su trabajo con clientes y procesos comerciales. Este CV no especifica empresa, fechas ni tamaño de equipo de la gerencia.', target: 'capacidades', link: 'Ver liderazgo y capacidades' },
+        herramientas: { text: 'Office y las herramientas digitales de gestión forman parte de sus conocimientos y trayectoria. Jira, GitHub Projects y Microsoft Project aparecen como ecosistema propuesto para la gestión senior: acciones e incidencias, coordinación con equipos técnicos y planificación de hitos y dependencias. Kanban se plantea para priorizar el flujo y revisar bloqueos.', target: 'experiencia-uve', link: 'Ver herramientas aplicadas al entorno de UVE' },
+        ubicacion: { text: 'El perfil indica Benalmádena, Málaga, carné de conducir B, vehículo propio y disponibilidad de desplazamiento.', target: 'inicio', link: 'Ver ubicación y movilidad' },
+        formacion: { text: 'Su formación incluye Química, auditoría interna de calidad, seguridad y ambiente, IA aplicada a procesos, seguridad alimentaria, indicadores de gestión, ISO 9001 y un taller Kaizen. Los centros, fechas y duraciones están en el bloque de formación.', target: 'formacion', link: 'Ver formación' },
+        metricas: { text: 'El CV describe objetivos de ventas, reportes y análisis, pero no publica cifras de facturación, porcentajes de mejora ni tamaño de equipos. Los hitos visibles corresponden a fechas y a las 40 horas de formación en IA.', target: 'mapa', link: 'Ver hitos de la trayectoria' },
+        privacidad: { text: 'Este perfil muestra la ubicación general y la movilidad. No incluye teléfono, correo ni domicilio exacto. Para datos de contacto, consulta a la persona que te ha facilitado el CV.', target: 'inicio', link: 'Ver información del perfil' },
+        desconocido: { text: 'No encuentro esa información en este CV. Puedo ayudarte con UVE, DOS G, PSC, las fechas 2014, 2019, 2021, 2022 y 2025, la transición de química a ventas, el liderazgo, la formación o las herramientas.', target: 'trayectoria', link: 'Explorar la experiencia profesional' }
+      };
+      const normalize = (value) => value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      const topicFor = (question) => {
+        const q = normalize(question);
+        if (/telefono|correo|email|contact|domicilio|direccion exacta/.test(q)) return 'privacidad';
+        if (/uve|actual|2022/.test(q) && !/dos\s*g|2021/.test(q)) return 'uve';
+        if (/dos\s*g|2021.*2022|noviembre|mayo/.test(q)) return 'dosg';
+        if (/psc|2019|septiembre/.test(q)) return 'psc';
+        if (/transici|quimic.*venta|venta.*quimic|cambio.*carrera/.test(q)) return 'transicion';
+        if (/2025|inteligencia|\bia\b|generativa|chatgpt|automatiza/.test(q)) return 'ia';
+        if (/2014|quimic|homolog|universidad|licenci|titulo/.test(q)) return 'quimica';
+        if (/jira|github|microsoft|project|kanban|agil|scrum|herramienta|office/.test(q)) return 'herramientas';
+        if (/lider|geren|senior|equipo|proyecto/.test(q)) return 'liderazgo';
+        if (/ubic|malaga|benalm|vive|coche|movilidad|carn[eé]|desplaza/.test(q)) return 'ubicacion';
+        if (/estudi|formaci|curso|aprendi|calidad|kaizen|2024|2015|2013/.test(q)) return 'formacion';
+        if (/porcent|factura|cuant|cifra|metric|resultado|logro/.test(q)) return 'metricas';
+        if (/perfil|experien|quien|presenta|resume|resum|trayector/.test(q)) return 'transicion';
+        return 'desconocido';
+      };
+      const setOpen = (open, returnFocus = true) => {
+        if (!open) {
+          log.replaceChildren();
+          form.reset();
+          scroller.scrollTop = 0;
+        }
+        panel.hidden = !open;
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Cerrar asistente del CV' : 'Abrir asistente del CV');
+        if (open) panel.querySelector('.chat-preset').focus();
+        else if (returnFocus) toggle.focus();
+      };
+      toggle.addEventListener('click', () => setOpen(panel.hidden));
+      close.addEventListener('click', () => setOpen(false));
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !panel.hidden) { event.preventDefault(); setOpen(false); }
+      });
+      const ask = (question, topic) => {
+        const answer = answers[topic] || answers.desconocido;
+        const user = document.createElement('p');
+        user.className = 'chat-message chat-message--user';
+        user.textContent = question;
+        const reply = document.createElement('div');
+        reply.className = 'chat-message';
+        const text = document.createElement('p');
+        text.textContent = answer.text;
+        const link = document.createElement('a');
+        link.href = '#' + answer.target;
+        link.textContent = answer.link + ' →';
+        link.addEventListener('click', (event) => {
+          const target = document.getElementById(answer.target);
+          if (!target) return;
+          event.preventDefault();
+          setOpen(false, false);
+          target.setAttribute('tabindex', '-1');
+          target.focus({ preventScroll: true });
+          target.scrollIntoView({ behavior: reducedMotion.matches ? 'instant' : 'smooth', block: 'start' });
+          history.replaceState(null, '', '#' + answer.target);
+        });
+        reply.append(text, link);
+        log.append(user, reply);
+        while (log.children.length > 16) log.firstElementChild.remove();
+        scroller.scrollTop = scroller.scrollHeight;
+      };
+      panel.querySelectorAll('[data-topic]').forEach((preset) => {
+        preset.addEventListener('click', () => ask(preset.innerText.replace(/\n/g, ' · '), preset.dataset.topic));
+      });
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const question = input.value.trim();
+        if (!question) return;
+        ask(question, topicFor(question));
+        input.value = '';
+        input.focus();
+      });
+    })();
+  </script>
+</body>
+</html>
